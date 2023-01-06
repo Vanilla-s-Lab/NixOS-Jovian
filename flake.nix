@@ -1,6 +1,9 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+
+    Jovian-NixOS.url = "github:Jovian-Experiments/Jovian-NixOS";
+    Jovian-NixOS.flake = false;
   };
 
   outputs = { nixpkgs, Jovian-NixOS, ... }:
@@ -14,6 +17,12 @@
           "${nixpkgs}/nixos/modules/installer/cd-dvd/iso-image.nix"
 
           { system.stateVersion = "22.11"; }
+
+          "${Jovian-NixOS}/modules"
+          { jovian.steam.enable = true; }
+
+          { networking.networkmanager.enable = true; }
+          { nixpkgs.config.allowUnfree = true; }
         ];
       };
     };
