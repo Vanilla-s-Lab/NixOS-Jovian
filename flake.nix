@@ -19,7 +19,7 @@
           { system.stateVersion = "22.11"; }
 
           "${Jovian-NixOS}/modules"
-          { jovian.steam.enable = true; }
+          { jovian.devices.steamdeck.enable = true; }
 
           { networking.networkmanager.enable = true; }
           { nixpkgs.config.allowUnfree = true; }
