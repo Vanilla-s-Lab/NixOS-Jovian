@@ -13,8 +13,9 @@
       Jovian = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          # nix build .#Jovian.config.system.build.isoImage -v -L
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/iso-image.nix"
+          # nix build .#Jovian.config.system.build.sdImage -v -L
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-x86_64.nix"
+          { config.sdImage.compressImage = false; }
 
           { system.stateVersion = "22.11"; }
 
