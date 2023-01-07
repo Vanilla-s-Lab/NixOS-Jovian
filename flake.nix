@@ -4,27 +4,22 @@
 
     Jovian-NixOS.url = "github:Jovian-Experiments/Jovian-NixOS";
     Jovian-NixOS.flake = false;
+
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, Jovian-NixOS, ... }:
-    let system = "x86_64-linux"; in
+  outputs = { nixpkgs, Jovian-NixOS, nixos-generators, ... }: {
+    Jovian-Image = nixos-generators.nixosGenerate {
+      system = "x86_64-linux";
+      format = "raw-efi";
 
-    {
-      Jovian = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          # nix build .#Jovian.config.system.build.sdImage -v -L
-          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-x86_64.nix"
-          { config.sdImage.compressImage = false; }
+      modules = [
+        { system.stateVersion = "22.11"; }
 
-          { system.stateVersion = "22.11"; }
-
-          "${Jovian-NixOS}/modules"
-          { jovian.devices.steamdeck.enable = true; }
-
-          { networking.networkmanager.enable = true; }
-          { nixpkgs.config.allowUnfree = true; }
-        ];
-      };
+        "${Jovian-NixOS}/modules"
+        { jovian.devices.steamdeck.enable = true; }
+      ];
     };
+  };
 }
