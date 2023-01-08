@@ -14,20 +14,8 @@
       system = "x86_64-linux";
       format = "raw-efi";
 
-      modules = [
-        { system.stateVersion = "22.11"; }
-
-        { nixpkgs.config.allowUnfree = true; }
-        { hardware.enableAllFirmware = true; }
-
-        # https://github.com/Jovian-Experiments/Jovian-NixOS/blob/development/USAGE.md
-        { imports = [ ("${Jovian-NixOS}" + "/modules") ]; }
-        { jovian.devices.steamdeck.enable = true; }
-
-        # https://github.com/nix-community/nixos-generators#format-specific-notes
-        { boot.kernelParams = [ "console=tty0" "loglevel=5" ]; }
-        { boot.loader.timeout = 5; }
-      ];
+      modules = [ ./bootable.nix ];
+      specialArgs = { inherit Jovian-NixOS; };
     };
   };
 }
