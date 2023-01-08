@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     Jovian-NixOS.url = "github:Jovian-Experiments/Jovian-NixOS";
     Jovian-NixOS.flake = false;
@@ -17,11 +17,15 @@
       modules = [
         { system.stateVersion = "22.11"; }
 
-        "${Jovian-NixOS}/modules"
+        { nixpkgs.config.allowUnfree = true; }
+        { hardware.enableAllFirmware = true; }
+
+        # https://github.com/Jovian-Experiments/Jovian-NixOS/blob/development/USAGE.md
+        { imports = [ ("${Jovian-NixOS}" + "/modules") ]; }
         { jovian.devices.steamdeck.enable = true; }
 
         # https://github.com/nix-community/nixos-generators#format-specific-notes
-        { boot.kernelParams = [ "console=tty0" ]; }
+        { boot.kernelParams = [ "console=tty0" "loglevel=5" ]; }
         { boot.loader.timeout = 5; }
       ];
     };
