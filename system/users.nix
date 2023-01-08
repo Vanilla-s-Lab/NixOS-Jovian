@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
-  users.users."root" = {
+  users.users."vanilla" = {
     shell = pkgs.fish;
+
+    isNormalUser = true;
+    group = "wheel";
 
     hashedPassword = "$6" + "$NixOS/Jovian"
       + "$KqCR5fNyd1XhsqlRrkl6TqVd4zOgVPaTuyF"

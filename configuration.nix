@@ -5,5 +5,7 @@
 
     ./system/networking.nix
     ./system/users.nix
+
+    ./services/xserver.nix
   ];
 }
