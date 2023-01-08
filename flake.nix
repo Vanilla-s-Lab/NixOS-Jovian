@@ -17,5 +17,12 @@
       modules = [ ./bootable.nix ];
       specialArgs = { inherit inputs; };
     };
+
+    Jovian = nixpkgs.lib.nixosSystem {
+      system = Jovian-Image.system;
+
+      modules = [ ./configuration.nix ];
+      specialArgs = { inherit inputs; };
+    };
   };
 }
