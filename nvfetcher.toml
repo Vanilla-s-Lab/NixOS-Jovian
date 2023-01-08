@@ -1,0 +1,9 @@
+[gnome-shell-mobile]
+src.git = "https://gitlab.gnome.org/verdre/gnome-shell"
+src.branch = "mobile-shell"
+fetch.git = "https://gitlab.gnome.org/verdre/gnome-shell"
+
+[mutter-mobile]
+src.git = "https://gitlab.gnome.org/verdre/mutter"
+src.branch = "mobile-shell"
+fetch.git = "https://gitlab.gnome.org/verdre/mutter"
