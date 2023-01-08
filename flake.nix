@@ -9,13 +9,13 @@
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, Jovian-NixOS, nixos-generators, ... }: rec {
-    Jovian-Image = nixos-generators.nixosGenerate rec {
+  outputs = { self, nixpkgs, nixos-generators, ... }@inputs: rec {
+    Jovian-Image = nixos-generators.nixosGenerate {
       system = "x86_64-linux";
       format = "raw-efi";
 
       modules = [ ./bootable.nix ];
-      specialArgs = { inherit Jovian-NixOS; };
+      specialArgs = { inherit inputs; };
     };
   };
 }
