@@ -4,7 +4,7 @@
     shell = pkgs.fish;
 
     isNormalUser = true;
-    group = "wheel";
+    extraGroups = [ "wheel" ];
 
     hashedPassword = "$6" + "$NixOS/Jovian"
       + "$KqCR5fNyd1XhsqlRrkl6TqVd4zOgVPaTuyF"
