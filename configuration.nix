@@ -7,5 +7,6 @@
     ./system/users.nix
 
     ./services/xserver.nix
+    ./services/pipewire.nix
   ];
 }
