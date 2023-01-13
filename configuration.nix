@@ -9,4 +9,6 @@
     ./services/xserver.nix
     ./services/pipewire.nix
   ];
+
+  time.timeZone = "Asia/Shanghai";
 }
