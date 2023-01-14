@@ -10,6 +10,6 @@
   jovian.devices.steamdeck.enable = true;
 
   # https://github.com/nix-community/nixos-generators#format-specific-notes
-  boot.kernelParams = [ "console=tty0" /* "loglevel=5" */ ];
-  boot.loader.timeout = 5;
+  # boot.kernelParams = [ "console=tty0" /* "loglevel=5" */ ];
+  # boot.loader.timeout = 5;
 }
