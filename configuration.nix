@@ -7,7 +7,7 @@
     ./system/users.nix
 
     ./services/xserver.nix
-    ./services/pipewire.nix
+    ./services/pulseaudio.nix
   ];
 
   time.timeZone = "Asia/Shanghai";

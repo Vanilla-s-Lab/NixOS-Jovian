@@ -1,8 +1,8 @@
 { ... }:
 {
-  # /modules/steamdeck/sound.nix
-  hardware.pulseaudio.enable = false;
+  # /modules/services/x11/desktop-managers/plasma5.nix
+  hardware.pulseaudio.enable = true;
 
-  security.rtkit.enable = true;
-  services.pipewire.enable = true;
+  # /modules/steamdeck/sound.nix
+  services.pipewire.enable = false;
 }
