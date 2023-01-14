@@ -5,6 +5,7 @@
 
     ./system/networking.nix
     ./system/users.nix
+    ./system/fileSystems.nix
 
     ./services/xserver.nix
     ./services/pulseaudio.nix
