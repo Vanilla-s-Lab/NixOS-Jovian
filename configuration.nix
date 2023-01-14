@@ -8,6 +8,7 @@
 
     ./services/xserver.nix
     ./services/pulseaudio.nix
+    ./services/openssh.nix
   ];
 
   time.timeZone = "Asia/Shanghai";
