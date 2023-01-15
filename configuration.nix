@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./bootable.nix
@@ -14,4 +14,7 @@
   ];
 
   time.timeZone = "Asia/Shanghai";
+
+  environment.systemPackages = with pkgs; [ etcher yuzu ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-12.2.3" ];
 }
