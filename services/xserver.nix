@@ -5,6 +5,7 @@
   users.extraUsers."vanilla".extraGroups = [ "networkmanager" ];
 
   services.xserver.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "vanilla";
+
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.mobile.enable = true;
 }
