@@ -3,7 +3,9 @@
   system.stateVersion = "22.11";
 
   nixpkgs.config.allowUnfree = true;
-  hardware.firmware = [ pkgs.linux-firmware ];
+
+  # https://github.com/Jovian-Experiments/Jovian-NixOS/pull/62
+  # hardware.firmware = [ pkgs.linux-firmware ];
 
   # https://github.com/Jovian-Experiments/Jovian-NixOS/blob/development/USAGE.md
   imports = [ ("${inputs.Jovian-NixOS}" + "/modules") ];
