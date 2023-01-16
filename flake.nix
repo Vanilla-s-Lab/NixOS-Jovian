@@ -10,22 +10,24 @@
 
     deploy-rs.url = "github:serokell/deploy-rs";
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, nixos-generators, deploy-rs, ... }@inputs: rec {
+  outputs = { self, nixpkgs, nixos-generators, deploy-rs, nur, ... }@inputs: rec {
     Jovian-Image = nixos-generators.nixosGenerate {
       system = "x86_64-linux";
       format = "raw-efi";
 
       modules = [ ./bootable.nix ];
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs nur; };
     };
 
     Jovian = nixpkgs.lib.nixosSystem {
       system = Jovian-Image.system;
 
       modules = [ ./configuration.nix ];
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs nur; };
     };
 
     deploy.nodes.Jovian = {
