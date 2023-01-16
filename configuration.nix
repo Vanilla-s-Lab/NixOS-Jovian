@@ -6,6 +6,7 @@
     ./system/networking.nix
     ./system/users.nix
     ./system/fileSystems.nix
+    ./system/fonts.nix
 
     ./services/xserver.nix
     ./services/pulseaudio.nix
